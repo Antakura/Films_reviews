@@ -1,0 +1,26 @@
+<form method="POST" action="" novalidate>
+    {{ form.csrf_token }}
+    <div class="mb-3">
+        {{ form.author.label }}
+        {{ form.author(class="form-control") }}
+        {% for error in form.author.errors %}
+            <div class="alert alert-danger" role="alert">
+              <span>{{ error }}</span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.text.label }}
+        {{ form.text(class="form-control") }}
+        {% for error in form.text.errors %}
+            <div class="alert alert-danger" role="alert">
+              <span>{{ error }}</span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        {{ form.score.label }}
+        {{ form.score(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-lg btn-outline-secondary") }}
+</form>

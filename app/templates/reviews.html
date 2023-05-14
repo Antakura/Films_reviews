@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+Отзывы
+{% endblock title %}
+{% block content %}
+<div class="row mb-3">
+    <h1 class="mt-3 display-4">Отзывы</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Текст</th>
+            <th scope="col">Дата добавления</th>
+            <th scope="col">Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ review.author }}</td>
+            <td>
+                <p>Отзыв к фильму: {{ movies[review.film_id].title }}</p>
+                {{ review.text }}
+            </td>
+            <td>
+                {{ review.created_at }}
+            </td>
+            <td>
+                <a href="{{ url_for('delete_review', review_id=review.id) }}" class="btn btn-sm btn-outline-secondary">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}
